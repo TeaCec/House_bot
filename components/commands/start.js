@@ -1,5 +1,9 @@
 module.exports = (bot) => {
     bot.onText(/\/start/, (msg) => {
-        bot.sendMessage(msg.chat.id, `Привет, ${msg.from.first_name}! Я твой бот.`);
+        bot.sendMessage(msg.chat.id,
+            `Привет, ${msg.from.first_name}!\nЯ бот который помогает влд различных хаусов.
+        \nК сожалению на данный момент я не дописан.
+        \nИ свободно мной пользоваться можно будет через неизвестное количество времени...`
+        );
     });
 }
