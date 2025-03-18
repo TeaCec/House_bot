@@ -18,6 +18,7 @@ module.exports = (bot) => {
 
         if (userIndex >= 0) {
             users[userIndex].msgCount++
+            users[userIndex].msgText.push(msg.text)
             fs.writeFileSync(usersFile, JSON.stringify(users, null, 4));
             return; // Выходим из функции, чтобы не сохранять повторно пользователя
         }
@@ -27,8 +28,11 @@ module.exports = (bot) => {
             username: msg.from.username || undefined, // Имя пользователя
             userId: msg.from.id, // ID пользователя
             groupId: msg.chat.id, //ID чата
-            msgCount: 1 // количество сообщений от пользователя
+            msgCount: 1, // количество сообщений от пользователя
+            msgText: [] // создаем массив с соо юзеров
         };
+
+        newUser.msgText.push(msg.text)
 
         users.push(newUser);// Добавляем пользователя в массив
 

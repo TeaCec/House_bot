@@ -4,6 +4,12 @@ const token = process.env.BOT_TOKEN;
 
 const bot = new TelegramBot(token, { polling: true });
 
+bot.setMyCommands([
+    {command: '/start', description: 'Включить бота'},
+    {command: '/help', description: 'Список команд'},
+    {command: '/about', description: 'Информация про бота'}
+])
+
 const startCommand = require('./components/commands/start')
 const aboutCommand = require('./components/commands/about')
 const helpCommand = require('./components/commands/help')
