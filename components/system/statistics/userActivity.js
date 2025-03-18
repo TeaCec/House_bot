@@ -12,6 +12,7 @@ if (fs.existsSync(usersFile)) {
 module.exports = (bot) => {
     bot.on("message", (msg) => {
         if (msg.text.startsWith("/")) return; // Игнорируем команды
+        if (msg.chat.type !== 'group') return; // Игнорируем соо вне чата
         // Проверяем есть ли пользователь в системе
         const userIndex = users.findIndex(m => m.userId === msg.from.id);
 
@@ -25,6 +26,7 @@ module.exports = (bot) => {
         const newUser = {
             username: msg.from.username || undefined, // Имя пользователя
             userId: msg.from.id, // ID пользователя
+            groupId: msg.chat.id, //ID чата
             msgCount: 1 // количество сообщений от пользователя
         };
 
